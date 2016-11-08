@@ -24,6 +24,22 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 ### your code goes here ###
+from sklearn.datasets import load_iris
+from sklearn import tree
+clf = tree.DecisionTreeClassifier(min_samples_split=40)
+clf = clf.fit(features_train, labels_train)
+
+pred = clf.predict(features_test)
+
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(labels_test, pred)
+print("accuracy : {}".format(accuracy))
+
+from sklearn.metrics import classification_report
+print(classification_report(labels_test, pred, target_names=['Sara', 'Chris']))
+
+from sklearn import metrics
+print(metrics.confusion_matrix(labels_test,pred))
 
 
 #########################################################
